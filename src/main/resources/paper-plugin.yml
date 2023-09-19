@@ -1,0 +1,5 @@
+name: fire-sword
+version: '${project.version}'
+main: com.levelchemistry.firesword.Fire_sword
+api-version: '1.20'
+authors: [LevelChemistry]
