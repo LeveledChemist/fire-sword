@@ -7,6 +7,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerBedLeaveEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -40,16 +41,11 @@ public final class Fire_sword extends JavaPlugin implements Listener {
         if (Objects.equals(playerName, "LevelChemistry")) event.setJoinMessage("Welcome Level Chemistry!");
         if (Objects.equals(playerName, "vx8")) event.setJoinMessage("Hahahaha its vx8");
     }
-
-    //The code below ideally will send a chat message to the player letting them know they dropped an item
-    public void onDiamondDrop(PlayerDropItemEvent event, Player entity) {
-        event.getItemDrop();
-        entity.sendMessage("You have dropped an item");
-        return;
+    //Mistake below was not calling event handler before attempting to use new event listeners
+    @EventHandler
+    public void onLeaveBed(PlayerBedLeaveEvent event){
+        Player player = event.getPlayer();
+        player.sendRawMessage("test?");
+        player.setHealth(0);
     }
-    //Filler code until I can get the above working
-    //public void chatDiamondDrop(Player entity) {
-
-        //entity.sendRawMessage("You have dropped an item");
-    //}
 }
