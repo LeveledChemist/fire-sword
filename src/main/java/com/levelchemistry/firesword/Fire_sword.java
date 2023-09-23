@@ -42,6 +42,7 @@ public final class Fire_sword extends JavaPlugin implements Listener {
         if (Objects.equals(playerName, "vx8")) event.setJoinMessage("Hahahaha its vx8");
     }
     //Mistake below was not calling event handler before attempting to use new event listeners
+    //Method below restores health and hunger when a player leaves the bed
     @EventHandler
     public void onLeaveBed(PlayerBedLeaveEvent event){
         Player player = event.getPlayer();
