@@ -45,7 +45,8 @@ public final class Fire_sword extends JavaPlugin implements Listener {
     @EventHandler
     public void onLeaveBed(PlayerBedLeaveEvent event){
         Player player = event.getPlayer();
-        player.sendRawMessage("test?");
-        player.setHealth(0);
+        player.setHealth(20);
+        player.setFoodLevel(20);
+        player.sendRawMessage("Your health and hunger has been restored!");
     }
 }
