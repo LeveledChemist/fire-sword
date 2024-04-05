@@ -7,12 +7,11 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerBedLeaveEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.attribute.Attribute;
+import sun.font.EAttribute;
 
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ public final class Fire_sword extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        System.out.println("Fire sword now enabled!");
+        System.out.println("Sleep restore now enabled!");
 
         getServer().getPluginManager().registerEvents(this, this);
 
@@ -38,15 +37,15 @@ public final class Fire_sword extends JavaPlugin implements Listener {
         // Code below sets a join message to Welcome Level Chemistry if my username is found on the player join event
         String playerName;
         playerName = String.valueOf(event.getPlayer().getName());
-        if (Objects.equals(playerName, "LevelChemistry")) event.setJoinMessage("Welcome Level Chemistry!");
         if (Objects.equals(playerName, "vx8")) event.setJoinMessage("Hahahaha its vx8");
     }
     //Mistake below was not calling event handler before attempting to use new event listeners
-    //Method below restores health and hunger when a player leaves the bed
+    //Method below restores health and hunger when a player leaves the bed, grabbing the max health value of the player first
     @EventHandler
     public void onLeaveBed(PlayerBedLeaveEvent event){
         Player player = event.getPlayer();
-        player.setHealth(20);
+        double Health = player.getMaxHealth();
+        player.setHealth(Health);
         player.setFoodLevel(20);
         player.sendRawMessage("Your health and hunger has been restored!");
     }
