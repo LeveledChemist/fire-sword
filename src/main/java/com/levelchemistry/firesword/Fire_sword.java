@@ -19,7 +19,7 @@ public final class Fire_sword extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        System.out.println("Sleep restore now enabled!");
+        System.out.println("Bed restore now enabled!");
 
         getServer().getPluginManager().registerEvents(this, this);
 
@@ -47,6 +47,6 @@ public final class Fire_sword extends JavaPlugin implements Listener {
         double Health = player.getMaxHealth();
         player.setHealth(Health);
         player.setFoodLevel(20);
-        player.sendRawMessage("Your health and hunger has been restored!");
+        player.sendRawMessage("Your health and hunger have been restored!");
     }
 }
